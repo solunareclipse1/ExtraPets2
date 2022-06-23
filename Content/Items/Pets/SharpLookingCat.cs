@@ -6,30 +6,30 @@ using Terraria.GameContent.Creative;
 using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Projectiles;
 
-namespace ExtraPets2.Content.Items {
-	public class QuantumBallItem : ModItem {
+namespace ExtraPets2.Content.Items.Pets {
+	public class SharpLookingCat : ModItem {
 
-        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/QuantumBall";
+        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/SharpLookingCat";
 
 		public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Quantum Ball");
-			Tooltip.SetDefault("Summons ugly tech to float in front of you");
+            DisplayName.SetDefault("Sharp Looking Cat");
+			Tooltip.SetDefault("Summons a shoddily retextured cat to keep you company\nNote: Feline is not meant for consumption.");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
 		public override void SetDefaults() {
 			Item.damage = 0;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.shoot = ModContent.ProjectileType<QuantumBallProjectile>();
+			Item.shoot = ModContent.ProjectileType<TuxCatProjectile>();
 			Item.width = 30;
 			Item.height = 30;
-			Item.UseSound = SoundID.Research;
+			Item.UseSound = SoundID.AbigailCry;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.rare = ItemRarityID.Yellow;
 			Item.noMelee = true;
-			Item.value = Item.sellPrice(1, 2, 4);
-			Item.buffType = ModContent.BuffType<QuantumBallBuff>();
+			Item.value = Item.sellPrice(4, 8, 16);
+			Item.buffType = ModContent.BuffType<TuxCatBuff>();
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame) {
@@ -39,10 +39,11 @@ namespace ExtraPets2.Content.Items {
 		}
 		
 		public override void AddRecipes() {
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.Register();
+			CreateRecipe()
+				.AddIngredient(ItemID.FlinxFur, 10)
+				.AddIngredient(ItemID.BlackDye, 6)
+				.AddTile(TileID.LivingLoom)
+				.Register();
 		}
 	}
 }

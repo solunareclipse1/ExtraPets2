@@ -13,7 +13,7 @@ namespace ExtraPets2.Content.Buffs {
             Description.SetDefault("Note: Resembelance to any snack food product is entirely coincidental\nFeline is not designed for consumption");
 
             Main.buffNoTimeDisplay[Type] = true;
-            Main.lightPet[Type] = true;
+            Main.vanityPet[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex) {

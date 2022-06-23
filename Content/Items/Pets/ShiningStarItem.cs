@@ -6,30 +6,30 @@ using Terraria.GameContent.Creative;
 using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Projectiles;
 
-namespace ExtraPets2.Content.Items {
-	public class SharpLookingCat : ModItem {
+namespace ExtraPets2.Content.Items.Pets {
+	public class ShiningStarItem : ModItem {
 
-        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/SharpLookingCat";
+        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/ShiningStarItem";
 
 		public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Sharp Looking Cat");
-			Tooltip.SetDefault("Summons a shoddily retextured cat to keep you company\nNote: Feline is not meant for consumption.");
+            DisplayName.SetDefault("Shining Star");
+			Tooltip.SetDefault("Summons horrible pixel art that follows you around");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
 		public override void SetDefaults() {
 			Item.damage = 0;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.shoot = ModContent.ProjectileType<TuxCatProjectile>();
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.shoot = ModContent.ProjectileType<ShiningStarProjectile>();
 			Item.width = 30;
 			Item.height = 30;
-			Item.UseSound = SoundID.AbigailCry;
+			Item.UseSound = SoundID.MaxMana;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.rare = ItemRarityID.Yellow;
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(2, 4, 8);
-			Item.buffType = ModContent.BuffType<TuxCatBuff>();
+			Item.buffType = ModContent.BuffType<ShiningStarBuff>();
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame) {
@@ -40,9 +40,9 @@ namespace ExtraPets2.Content.Items {
 		
 		public override void AddRecipes() {
 			CreateRecipe()
-				.AddIngredient(ItemID.SuspiciousLookingTentacle, 1)
-				.AddIngredient(ItemID.Cog, 30)
-				.AddTile(TileID.MythrilAnvil)
+				.AddIngredient(ItemID.FallenStar, 20)
+				.AddIngredient(ItemID.LifeCrystal, 1)
+				.AddTile(TileID.DemonAltar)
 				.Register();
 		}
 	}
