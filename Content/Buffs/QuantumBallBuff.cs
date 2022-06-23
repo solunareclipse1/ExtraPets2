@@ -6,11 +6,11 @@ using ExtraPets2.Content.Projectiles;
 namespace ExtraPets2.Content.Buffs {
     public class QuantumBallBuff : ModBuff {
 
-        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/QuantumBall";
+        public override string Texture => ExtraPets2.AssetPath + "Textures/Buffs/QuantumBallBuff";
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Quantum Ball");
-            Description.SetDefault("Horrible pixel art lights your way");
+            Description.SetDefault("Ugly tech floats menacingly in front of you");
 
             Main.buffNoTimeDisplay[Type] = true;
             Main.lightPet[Type] = true;

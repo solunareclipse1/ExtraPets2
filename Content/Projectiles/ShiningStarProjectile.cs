@@ -4,23 +4,21 @@ using Terraria.ModLoader;
 using ExtraPets2.Content.Buffs;
 
 namespace ExtraPets2.Content.Projectiles {
-	public class QuantumBallProjectile : ModProjectile {
+	public class ShiningStarProjectile : ModProjectile {
 
-        public override string Texture => ExtraPets2.AssetPath + "Textures/Items/QuantumBall";
+        public override string Texture => ExtraPets2.AssetPath + "Textures/Projectiles/ShiningStarPet";
 
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Quantum Ball");
+			DisplayName.SetDefault("Shining Star");
 
-			Main.projFrames[Projectile.type] = 1;
+			Main.projFrames[Projectile.type] = 10;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;
 		}
 
 		public override void SetDefaults() {
-			Projectile.CloneDefaults(ProjectileID.EyeOfCthulhuPet);
-			Projectile.scale = 1.3f;
-
-			AIType = ProjectileID.EyeOfCthulhuPet;
+			Projectile.CloneDefaults(ProjectileID.Wisp);
+			AIType = ProjectileID.Wisp;
 		}
 
 		public override bool PreAI() {
@@ -31,13 +29,9 @@ namespace ExtraPets2.Content.Projectiles {
 
 		public override void AI() {
 			Player player = Main.player[Projectile.owner];
-
-			if (!player.dead && player.HasBuff(ModContent.BuffType<QuantumBallBuff>())) {
+			
+			if (!player.dead && player.HasBuff(ModContent.BuffType<ShiningStarBuff>())) {
 				Projectile.timeLeft = 2;
-			}
-
-			if (!Main.dedServ) {
-				Lighting.AddLight(Projectile.Center, 0.0f, 0.5f, 0.0f);
 			}
 		}
 	}
