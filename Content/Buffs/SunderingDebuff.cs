@@ -11,9 +11,8 @@ namespace ExtraPets2.Content.Buffs {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Sundering");
-            Description.SetDefault("You shouldn't have done that.");
+            Description.SetDefault("Back to dust...");
 
-            Main.buffNoTimeDisplay[Type] = true;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
         }
@@ -27,11 +26,15 @@ namespace ExtraPets2.Content.Buffs {
             player.noFallDmg = false;
             player.wingTime = 0;
             player.wingTimeMax = 0;
-            player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason(player.name + " no longer exists."), player.statLifeMax2/100, 0);
+            //if (player.statLife > 1) {
+                player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason(player.name + " became divided amongst themself."), player.statLifeMax2/160, 0);
+            //}
         }
 
         public override void Update(NPC npc, ref int buffIndex) {
-            npc.lifeRegen -= npc.lifeMax*2;
+            npc.defense = 0;
+            npc.lifeRegen -= npc.lifeMax*10;
+            npc.HitEffect(0, 20);
         }
     }
 }
