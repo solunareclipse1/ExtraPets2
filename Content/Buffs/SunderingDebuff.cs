@@ -32,8 +32,7 @@ namespace ExtraPets2.Content.Buffs {
         }
 
         public override void Update(NPC npc, ref int buffIndex) {
-            npc.defense = 0;
-            npc.lifeRegen -= npc.lifeMax*10;
+            npc.lifeRegen = -2*npc.lifeMax;
             npc.HitEffect(0, 20);
         }
     }

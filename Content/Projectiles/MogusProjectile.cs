@@ -20,7 +20,7 @@ namespace ExtraPets2.Content.Projectiles {
 			AIType = ProjectileID.Bunny;
 			Projectile.scale = 2;
 			DrawOriginOffsetX = 1;
-			DrawOriginOffsetY = 1;
+			DrawOriginOffsetY = 11;
 		}
 
 		public override bool PreAI() {
@@ -38,15 +38,15 @@ namespace ExtraPets2.Content.Projectiles {
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 505513);
+			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
 		}
 
 		public override void OnHitPlayer (Player target, int damage, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 505513);
+			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
 		}
 
 		public override void OnHitPvp (Player target, int damage, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 505513);
+			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
 		}
 	}
 }
