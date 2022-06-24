@@ -29,20 +29,15 @@ namespace ExtraPets2.Content.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            player.immune = false;
-            player.immuneTime = 0;
-            player.GetDamage<GenericDamageClass>() += 1.0f;
             SoundStyle chosenSound = Main.rand.Next(soundList);
-            if (Main.rand.Next(0, 3500) == 1337) {
+            if (Main.rand.Next(0, 9001) == 1337) {
                 SoundEngine.PlaySound(chosenSound);
             }
         }
 
         public override void Update(NPC npc, ref int buffIndex) {
-            npc.damage *= 2;
-            npc.defense /= 2;
             SoundStyle chosenSound = Main.rand.Next(soundList);
-            if (Main.rand.Next(0, 3500) == 1337) {
+            if (Main.rand.Next(0, 9001) == 1337) {
                 SoundEngine.PlaySound(chosenSound);
             }
         }

@@ -19,8 +19,14 @@ namespace ExtraPets2.Content.Projectiles {
 			Projectile.CloneDefaults(ProjectileID.Bunny);
 			AIType = ProjectileID.Bunny;
 			Projectile.scale = 2;
+			Projectile.width = 16;
+			Projectile.height = 16;
+			Projectile.minion = true;
+			Projectile.minionSlots = 0;
+			Projectile.penetrate = -1;
+			Projectile.friendly = true;
 			DrawOriginOffsetX = 1;
-			DrawOriginOffsetY = 11;
+			DrawOriginOffsetY = 10;
 		}
 
 		public override bool PreAI() {
@@ -35,18 +41,25 @@ namespace ExtraPets2.Content.Projectiles {
 			if (!player.dead && player.HasBuff(ModContent.BuffType<MogusBuff>())) {
 				Projectile.timeLeft = 2;
 			}
+
+			Projectile.friendly = true;
+			Projectile.damage = 1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
+		public override bool MinionContactDamage() {
+			return true;
+		}
+
+		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit) {
+			target.AddBuff(ModContent.BuffType<Suspicious>(), Main.rand.Next(1,360));
 		}
 
 		public override void OnHitPlayer (Player target, int damage, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
+			target.AddBuff(ModContent.BuffType<Suspicious>(), Main.rand.Next(1,360));
 		}
 
 		public override void OnHitPvp (Player target, int damage, bool crit) {
-			target.AddBuff(ModContent.BuffType<Suspicious>(), 101);
+			target.AddBuff(ModContent.BuffType<Suspicious>(), Main.rand.Next(1,360));
 		}
 	}
 }
