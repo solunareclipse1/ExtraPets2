@@ -1,5 +1,6 @@
 /.vscode
 /obj
+/bin
 /Properties
 /Assets/Textures/Buffs/BuffTemplate.png
 /Assets/Textures/Buffs/DebuffTemplate.png
