@@ -18,8 +18,7 @@ namespace ExtraPets2.Content.Items.Pets {
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 1;
-			Item.DamageType = DamageClass.Default;
+			Item.damage = 0;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.shoot = ModContent.ProjectileType<MogusProjectile>();
 			Item.width = 16;
@@ -27,9 +26,9 @@ namespace ExtraPets2.Content.Items.Pets {
 			Item.UseSound = EP2SoundStyles.EP2Mogus;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
-			Item.rare = ItemRarityID.Yellow;
+			Item.rare = ItemRarityID.Red;
 			Item.noMelee = true;
-			Item.value = Item.sellPrice(2, 4, 8);
+			Item.value = Item.sellPrice(5, 0, 5);
 			Item.buffType = ModContent.BuffType<MogusBuff>();
 		}
 

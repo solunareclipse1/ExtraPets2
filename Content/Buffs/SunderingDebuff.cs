@@ -26,9 +26,7 @@ namespace ExtraPets2.Content.Buffs {
             player.noFallDmg = false;
             player.wingTime = 0;
             player.wingTimeMax = 0;
-            //if (player.statLife > 1) {
-                player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason(player.name + " became divided amongst themself."), player.statLifeMax2/160, 0);
-            //}
+            player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason(player.name + " became divided amongst themself."), player.statLifeMax2/100, 0);
         }
 
         public override void Update(NPC npc, ref int buffIndex) {

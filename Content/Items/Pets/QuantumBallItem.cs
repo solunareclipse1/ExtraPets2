@@ -39,10 +39,11 @@ namespace ExtraPets2.Content.Items.Pets {
 		}
 		
 		public override void AddRecipes() {
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.Register();
+			CreateRecipe()
+				.AddIngredient(ItemID.SuspiciousLookingTentacle, 1)
+				.AddIngredient(ItemID.Cog, 30)
+				.AddTile(TileID.WorkBenches)
+				.Register();
 		}
 	}
 }
