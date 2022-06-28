@@ -1,8 +1,5 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
-using ExtraPets2.Content.Projectiles;
 
 namespace ExtraPets2.Content.Buffs {
     public class SunderingDebuff : ModBuff {
@@ -18,20 +15,11 @@ namespace ExtraPets2.Content.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            player.immune = false;
-            player.immuneTime = 0;
-            player.lifeRegen = 0;
-            player.lifeRegenTime = 0;
-            player.moveSpeed = 0.1f;
-            player.noFallDmg = false;
-            player.wingTime = 0;
-            player.wingTimeMax = 0;
-            player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason(player.name + " became divided amongst themself."), player.statLifeMax2/100, 0);
+            player.GetModPlayer<EPPlayer>().sunderingDebuff = true;
         }
 
         public override void Update(NPC npc, ref int buffIndex) {
-            npc.lifeRegen = -2*npc.lifeMax;
-            npc.HitEffect(0, 20);
+            npc.GetGlobalNPC<EPNPC>().sunderingDebuff = true;
         }
     }
 }

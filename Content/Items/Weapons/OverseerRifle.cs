@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using Terraria.DataStructures;
 using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Projectiles;
 
@@ -13,7 +14,7 @@ namespace ExtraPets2.Content.Items.Pets {
 
 		public override void SetStaticDefaults() {
             DisplayName.SetDefault("Overseer's Railgun");
-			Tooltip.SetDefault("Use of this weapon is biometrically restricted\nUnauthorized contact with weapon is forbidden");
+			Tooltip.SetDefault("\nUse of this weapon is biometrically restricted\nUnauthorized contact will result in termination");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
@@ -27,19 +28,20 @@ namespace ExtraPets2.Content.Items.Pets {
 			Item.height = 14;
 			Item.scale = 2.0f;
 			Item.UseSound = SoundID.Item96;
-			Item.useAnimation = 20;
-			Item.useTime = 20;
+			Item.useAnimation = 36;
+			Item.useTime = 36;
 			Item.rare = ItemRarityID.Master;
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(999, 99, 99, 99);
 			Item.useAmmo = AmmoID.Bullet;
 			Item.autoReuse = false;
-			Item.shootSpeed = 20f;
+			Item.shootSpeed = 6f;
 		}
 
 		public override void UpdateInventory(Player player) {
-			if (player.name != "The Overseer") {
-				player.AddBuff(ModContent.BuffType<SunderingDebuff>(), 16161616);
+			if (player.name != "The Overseer" && !player.GetModPlayer<EPPlayer>().sunderingDebuff) {
+				player.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
+				CombatText.NewText(player.getRect(), Colors.RarityCyan, "Biometric verification denied. Terminating.", true);
 			}
 		}
 

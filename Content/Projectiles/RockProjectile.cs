@@ -34,6 +34,7 @@ namespace ExtraPets2.Content.Projectiles {
 			target.AddBuff(BuffID.Ironskin, 600);
 			target.AddBuff(BuffID.ObsidianSkin, 600);
 			target.AddBuff(BuffID.Endurance, 600);
+			CombatText.NewText(target.getRect(), Colors.CoinSilver, "rock", true);
 		}
 
 		public override void OnHitPvp (Player target, int damage, bool crit) {
@@ -41,6 +42,7 @@ namespace ExtraPets2.Content.Projectiles {
 			target.AddBuff(BuffID.Ironskin, 600);
 			target.AddBuff(BuffID.ObsidianSkin, 600);
 			target.AddBuff(BuffID.Endurance, 600);
+			CombatText.NewText(target.getRect(), Colors.CoinSilver, "rock", true);
 		}
 	}
 }
