@@ -4,6 +4,9 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 
+using ExtraPets2.Content.Buffs;
+using ExtraPets2.Content.Projectiles;
+
 namespace ExtraPets2.Content {
     public class EPPlayer : ModPlayer {
         public bool sunderingDebuff = false;
@@ -55,5 +58,12 @@ namespace ExtraPets2.Content {
             //Main.NewText($"damageSource {damageSource.SourceOtherIndex}");
             return true;
         }
+
+        //hacky fix for overseer bullet not applying debuff on pvp hits
+        //public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit) {
+        //    if (proj.type == ModContent.ProjectileType<OverseerBullet>()) {
+        //        Player.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
+        //    }
+        //}
     }
 }

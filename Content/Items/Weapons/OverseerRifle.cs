@@ -1,11 +1,13 @@
 using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
-using Terraria.DataStructures;
+
 using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Projectiles;
+
 
 namespace ExtraPets2.Content.Items.Pets {
 	public class OverseerRifle : ModItem {
@@ -24,7 +26,7 @@ namespace ExtraPets2.Content.Items.Pets {
 			Item.knockBack = 16f;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shoot = ProjectileID.PurificationPowder;
-			Item.width = 44;
+			Item.width = 34;
 			Item.height = 14;
 			Item.scale = 2.0f;
 			Item.UseSound = SoundID.Item96;

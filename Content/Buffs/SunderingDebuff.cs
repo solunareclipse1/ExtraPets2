@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
+
 namespace ExtraPets2.Content.Buffs {
     public class SunderingDebuff : ModBuff {
 

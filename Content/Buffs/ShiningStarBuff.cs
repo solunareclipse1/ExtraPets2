@@ -1,7 +1,10 @@
 using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ModLoader;
+
 using ExtraPets2.Content.Projectiles;
+
 
 namespace ExtraPets2.Content.Buffs {
     public class ShiningStarBuff : ModBuff {

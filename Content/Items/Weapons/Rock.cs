@@ -14,7 +14,7 @@ namespace ExtraPets2.Content.Items.Pets {
 		public override void SetStaticDefaults() {
             DisplayName.SetDefault("rock");
 			Tooltip.SetDefault("rock strong. rock sturdy. rock powerful.");
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 		}
 
 		public override void SetDefaults() {
