@@ -23,7 +23,7 @@ namespace ExtraPets2.Content.Items.Pets {
 			Item.shoot = ModContent.ProjectileType<MogusProjectile>();
 			Item.width = 16;
 			Item.height = 16;
-			Item.UseSound = EP2SoundStyles.EP2Mogus;
+			Item.UseSound = EPSoundStyles.EP2Mogus;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.rare = ItemRarityID.Red;

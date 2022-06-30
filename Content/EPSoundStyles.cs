@@ -2,7 +2,7 @@ using Terraria.Audio;
 
 // Adds all of the new sound styles to the game
 namespace ExtraPets2.Content {
-    public class EP2SoundStyles {
+    public class EPSoundStyles {
         public static SoundStyle EP2Mogus = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MogusSpawn");
 
         // random sounds when you are sus
@@ -16,5 +16,7 @@ namespace ExtraPets2.Content {
         public static SoundStyle EP2Sus7 = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SusAudio7");
         public static SoundStyle EP2Sus8 = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SusAudio8");
         public static SoundStyle EP2Sus9 = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SusAudio9");
+
+        public static SoundStyle EPMagnumOpus = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MagnumOpus");
     }
 }

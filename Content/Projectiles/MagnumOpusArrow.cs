@@ -20,7 +20,7 @@ namespace ExtraPets2.Content.Projectiles {
 			Projectile.CloneDefaults(ProjectileID.Flamelash);
 			Projectile.width = 38;
 			Projectile.height = 13;
-			Projectile.penetrate = 5;
+			Projectile.penetrate = 1;
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
 		}

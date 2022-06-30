@@ -22,18 +22,22 @@ namespace ExtraPets2.Content.Items.Pets {
 
 		public override void SetDefaults() {
 			Item.CloneDefaults(ItemID.MagicMissile);
-			Item.damage = 180;
+			Item.damage = 200;
 			Item.DamageType = DamageClass.Magic;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.autoReuse = true;
-			Item.mana = 8;
+			Item.mana = 14;
 			Item.width = 30;
 			Item.height = 30;
-			Item.UseSound = SoundID.Item117;
-			Item.useAnimation = 15;
-			Item.useTime = 5;
+			Item.UseSound = EPSoundStyles.EPMagnumOpus with {
+				PitchRange = (-0.375000020955f, -0.16666669978f),
+				MaxInstances = 30
+			};
+			Item.useAnimation = 3;
+			Item.useTime = 3;
 			Item.rare = ItemRarityID.Master;
 			Item.noMelee = true;
+			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(999, 99, 99, 99);
 			Item.shootSpeed = 6f;
 			Item.shoot = ModContent.ProjectileType<MagnumOpusArrow>();
