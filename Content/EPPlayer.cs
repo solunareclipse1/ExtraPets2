@@ -58,7 +58,6 @@ namespace ExtraPets2.Content {
                 }
                 Player.lifeRegenTime = 0;
                 Player.lifeRegen -= (int) ((Player.statLifeMax2 * sunderingDebuff) / 16);
-                Main.NewText($"{sunderingDebuff}");
             }
         }
 
@@ -81,12 +80,5 @@ namespace ExtraPets2.Content {
             }
             return true;
         }
-
-        //hacky fix for overseer bullet not applying debuff on pvp hits
-        //public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit) {
-        //    if (proj.type == ModContent.ProjectileType<OverseerBullet>()) {
-        //        Player.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
-        //    }
-        //}
     }
 }
