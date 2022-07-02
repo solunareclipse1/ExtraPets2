@@ -39,7 +39,7 @@ namespace ExtraPets2.Content.Items.Weapons {
 			Item.rare = ItemRarityID.Master;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(999, 99, 99, 99);
+			Item.value = Item.sellPrice(0, 20, 0, 0);
 			Item.shootSpeed = 6f;
 			Item.shoot = ModContent.ProjectileType<MagnumOpusArrow>();
 

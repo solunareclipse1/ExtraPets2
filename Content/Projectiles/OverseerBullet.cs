@@ -71,12 +71,11 @@ namespace ExtraPets2.Content.Projectiles {
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
-			target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
+			target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 160);
 		}
-
-		// doesnt work, dunno why
-		//public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) {
-		//	target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
-		//}
+		
+		public override void OnHitPvp(Player target, int damage, bool crit) {
+			target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 160, false);
+		}
 	}
 }

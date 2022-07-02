@@ -4,14 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 
+using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Items.Weapons;
 
 
 namespace ExtraPets2.Content {
     public class EPPlayer : ModPlayer {
-        public bool sunderingDebuff = false;
+        public int sunderingDebuff;
         public bool equippedOpus = false;
         public int philoTextCooldown = 0;
 
@@ -38,7 +38,6 @@ namespace ExtraPets2.Content {
         };
 
         public override void ResetEffects() {
-            sunderingDebuff = false;
             equippedOpus = false;
         }
 
@@ -49,25 +48,22 @@ namespace ExtraPets2.Content {
         }
 
         public override void UpdateBadLifeRegen() {
-            if (sunderingDebuff) {
+            if (sunderingDebuff > 0) {
+                if (Player.FindBuffIndex(ModContent.BuffType<SunderingDebuff>()) < 0) {
+                    sunderingDebuff = 0;
+                    return;
+                }
                 if (Player.lifeRegen > 0) {
                     Player.lifeRegen = 0;
                 }
                 Player.lifeRegenTime = 0;
-                Player.lifeRegen -= (int) ((Player.statLifeMax2*2)/1.6);
-                Player.immune = false;
-                Player.immuneTime = 0;
-                Player.moveSpeed = 0.1f;
-                Player.noFallDmg = false;
-                Player.wingTime = 0;
-                Player.wingTimeMax = 0;
-                Dust dust = Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal, 0.75f);
-                dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
+                Player.lifeRegen -= (int) ((Player.statLifeMax2 * sunderingDebuff) / 16);
+                Main.NewText($"{sunderingDebuff}");
             }
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if (damage == 10 && hitDirection == 0 && damageSource.SourceOtherIndex == 8 && sunderingDebuff) {
+            if (hitDirection == 0 && damageSource.SourceOtherIndex == 8 && (Player.FindBuffIndex(ModContent.BuffType<SunderingDebuff>()) < 0 || sunderingDebuff > 0)) {
                 damageSource = PlayerDeathReason.ByCustomReason(Player.name + sunderDeathReasons[Main.rand.Next(0, 8)]);
                 playSound = false;
             }

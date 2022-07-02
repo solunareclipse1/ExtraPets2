@@ -1,11 +1,12 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Graphics.Shaders;
+
+
+using ExtraPets2.Content.Buffs;
 
 namespace ExtraPets2.Content {
     public class EPNPC : GlobalNPC {
-        public bool sunderingDebuff = false;
+        public int sunderingDebuff;
 
         public override bool InstancePerEntity {
             get {
@@ -13,19 +14,17 @@ namespace ExtraPets2.Content {
             }
         }
 
-        public override void ResetEffects(NPC npc) {
-            sunderingDebuff = false;
-        }
-
         public override void UpdateLifeRegen(NPC npc, ref int damage) {
-            if (sunderingDebuff) {
+            if (sunderingDebuff > 0) {
+                if (npc.FindBuffIndex(ModContent.BuffType<SunderingDebuff>()) < 0) {
+                    sunderingDebuff = 0;
+                    return;
+                }
                 if (npc.lifeRegen > 0) {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= (int) ((npc.lifeMax*2)/1.6);
-                damage = (int) (npc.lifeMax/50);
-                Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal, 0.75f);
-                dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
+                npc.lifeRegen -= (int) ((npc.lifeMax * sunderingDebuff) / 16);
+                damage = (int) ((npc.lifeMax * sunderingDebuff) / 480);
             }
         }
     }

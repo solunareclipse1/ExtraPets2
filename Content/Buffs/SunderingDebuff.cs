@@ -1,11 +1,14 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Graphics.Shaders;
 
 
 namespace ExtraPets2.Content.Buffs {
     public class SunderingDebuff : ModBuff {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Buffs/SunderingDebuff";
+        int sunderStacks;
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Sundering");
@@ -13,14 +16,45 @@ namespace ExtraPets2.Content.Buffs {
 
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
+            BuffID.Sets.IsAnNPCWhipDebuff[Type] = true;
         }
 
-        public override void Update(Player player, ref int buffIndex) {
-            player.GetModPlayer<EPPlayer>().sunderingDebuff = true;
+        // NPC
+        public override bool ReApply(NPC npc, int time, int buffIndex) {
+            EPNPC gnpc = npc.GetGlobalNPC<EPNPC>();
+            if (gnpc.sunderingDebuff < 16) {
+                gnpc.sunderingDebuff++;
+            }
+            npc.buffTime[buffIndex] = time;
+            return true;
         }
 
         public override void Update(NPC npc, ref int buffIndex) {
-            npc.GetGlobalNPC<EPNPC>().sunderingDebuff = true;
+            EPNPC gnpc = npc.GetGlobalNPC<EPNPC>();
+            if (gnpc.sunderingDebuff <= 0) {
+                gnpc.sunderingDebuff = 1;
+            }
+            Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal);
+            dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
+        }
+
+        // Player
+        public override bool ReApply(Player player, int time, int buffIndex) {
+            EPPlayer mplr = player.GetModPlayer<EPPlayer>();
+            if (mplr.sunderingDebuff < 16) {
+                mplr.sunderingDebuff++;
+            }
+            player.buffTime[buffIndex] = time;
+            return true;
+        }
+
+        public override void Update(Player player, ref int buffIndex) {
+            EPPlayer mplr = player.GetModPlayer<EPPlayer>();
+            if (mplr.sunderingDebuff <= 0) {
+                mplr.sunderingDebuff = 1;
+            }
+            Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal);
+            dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
         }
     }
 }
