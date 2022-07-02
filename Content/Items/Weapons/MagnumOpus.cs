@@ -23,7 +23,7 @@ namespace ExtraPets2.Content.Items.Weapons {
 
 		public override void SetDefaults() {
 			Item.CloneDefaults(ItemID.MagicMissile);
-			Item.damage = 200;
+			Item.damage = 333;
 			Item.DamageType = DamageClass.Magic;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.autoReuse = true;
