@@ -9,7 +9,7 @@ using ExtraPets2.Content.Buffs;
 using ExtraPets2.Content.Projectiles;
 
 
-namespace ExtraPets2.Content.Items.Pets {
+namespace ExtraPets2.Content.Items.Weapons {
 	public class OverseerRifle : ModItem {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Items/OverseerRifle";

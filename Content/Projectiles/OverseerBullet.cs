@@ -74,9 +74,9 @@ namespace ExtraPets2.Content.Projectiles {
 			target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
 		}
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) {
-			target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
-			Main.NewText("hello yes i have been hurt by pvp oh no");
-		}
+		// doesnt work, dunno why
+		//public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) {
+		//	target.AddBuff(ModContent.BuffType<SunderingDebuff>(), 960);
+		//}
 	}
 }

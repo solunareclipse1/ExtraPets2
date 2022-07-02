@@ -7,16 +7,16 @@ namespace ExtraPets2.Content.Buffs {
     public class Suspicious : ModBuff {
 
         SoundStyle[] soundList = new SoundStyle[] {
-            EPSoundStyles.EP2Sus0,
-            EPSoundStyles.EP2Sus1,
-            EPSoundStyles.EP2Sus2,
-            EPSoundStyles.EP2Sus3,
-            EPSoundStyles.EP2Sus4,
-            EPSoundStyles.EP2Sus5,
-            EPSoundStyles.EP2Sus6,
-            EPSoundStyles.EP2Sus7,
-            EPSoundStyles.EP2Sus8,
-            EPSoundStyles.EP2Sus9
+            EPSoundStyles.Sus0,
+            EPSoundStyles.Sus1,
+            EPSoundStyles.Sus2,
+            EPSoundStyles.Sus3,
+            EPSoundStyles.Sus4,
+            EPSoundStyles.Sus5,
+            EPSoundStyles.Sus6,
+            EPSoundStyles.Sus7,
+            EPSoundStyles.Sus8,
+            EPSoundStyles.Sus9
         };
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Buffs/Suspicious";

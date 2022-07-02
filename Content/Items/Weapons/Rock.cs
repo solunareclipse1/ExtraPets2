@@ -1,12 +1,12 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
-using ExtraPets2.Content.Buffs;
+
 using ExtraPets2.Content.Projectiles;
 
-namespace ExtraPets2.Content.Items.Pets {
+
+namespace ExtraPets2.Content.Items.Weapons {
 	public class Rock : ModItem {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Items/Rock";

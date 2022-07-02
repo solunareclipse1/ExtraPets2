@@ -6,9 +6,8 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 
-using ExtraPets2.Content.Projectiles;
 
-namespace ExtraPets2.Content.Items.Pets {
+namespace ExtraPets2.Content.Items.Weapons {
 	public class GraveDanger : ModItem {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Items/TrueQuantumBall";

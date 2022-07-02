@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ID;
-using Terraria.Graphics;
+using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace ExtraPets2.Content.Projectiles {
@@ -17,16 +17,18 @@ namespace ExtraPets2.Content.Projectiles {
 		}
 
 		public override void SetDefaults() {
-			Projectile.CloneDefaults(ProjectileID.Flamelash);
+			Projectile.CloneDefaults(ProjectileID.RainbowRodBullet);
 			Projectile.width = 38;
 			Projectile.height = 13;
 			Projectile.penetrate = 1;
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
+			Projectile.timeLeft = 1000;
 		}
 
 		public override void AI() {
 			float lerpValue = Utils.GetLerpValue(0f, 10f, Projectile.localAI[0], clamped: true);
+			Player player = Main.player[Projectile.owner];
 			Color newColor = Color.Lerp(Color.Transparent, Color.Crimson, lerpValue);
 			if (Main.rand.Next(6) == 0) {
 				Dust dust2 = Dust.NewDustDirect(Projectile.Center, 0, 0, 6, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100, newColor, 3.5f);
@@ -52,6 +54,10 @@ namespace ExtraPets2.Content.Projectiles {
 					dust4.fadeIn = 2.2f;
 					dust4.position += (dust4.position - Projectile.Center) * lerpValue * 10f;
 				}
+			}
+			if (Projectile.timeLeft <= 60 && player.channel) {
+				SoundEngine.PlaySound(EPSoundStyles.MagnumOpusExpire, Projectile.position);
+				Projectile.timeLeft = 1;
 			}
 		}
 		// This doesnt seem to work, and idk how to make it work.
