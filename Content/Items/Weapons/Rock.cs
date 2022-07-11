@@ -20,7 +20,7 @@ namespace ExtraPets2.Content.Items.Weapons {
 		public override void SetDefaults() {
 			Item.CloneDefaults(ItemID.Shuriken);
 			Item.noUseGraphic = true;
-			Item.damage = 1000;
+			Item.damage = 10000;
 			Item.DamageType = DamageClass.Generic;
 			Item.knockBack = 25f;
 			Item.useStyle = ItemUseStyleID.Swing;

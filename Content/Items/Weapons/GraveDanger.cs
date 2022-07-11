@@ -47,15 +47,5 @@ namespace ExtraPets2.Content.Items.Weapons {
 			}
 			return false;
 		}
-
-		public override void AddRecipes() {
-			CreateRecipe()
-				.AddIngredient(ItemID.Boulder, 999)
-				.AddIngredient(ItemID.Granite, 999)
-				.AddIngredient(ItemID.Marble, 999)
-				.AddIngredient(ItemID.RockGolemHead, 1)
-				.AddTile(TileID.BoulderStatue)
-				.Register();
-		}
 	}
 }

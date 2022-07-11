@@ -1,0 +1,4 @@
+i have taken all code in this folder from https://github.com/SamsonAllen13/ClickerClass
+so credit to them for giving me things to pilfer
+
+if my pilfering happens to be unwelcome, let me know and i will make a second attempt to figure out how it works (instead of stealing :P)

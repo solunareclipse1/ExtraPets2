@@ -8,7 +8,6 @@ namespace ExtraPets2.Content.Buffs {
     public class SunderingDebuff : ModBuff {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Buffs/SunderingDebuff";
-        int sunderStacks;
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Sundering");
@@ -22,8 +21,9 @@ namespace ExtraPets2.Content.Buffs {
         // NPC
         public override bool ReApply(NPC npc, int time, int buffIndex) {
             EPNPC gnpc = npc.GetGlobalNPC<EPNPC>();
-            if (gnpc.sunderingDebuff < 16) {
+            if (gnpc.sunderingDebuff < 8) {
                 gnpc.sunderingDebuff++;
+                npc.netUpdate = true;
             }
             npc.buffTime[buffIndex] = time;
             return true;
@@ -33,8 +33,9 @@ namespace ExtraPets2.Content.Buffs {
             EPNPC gnpc = npc.GetGlobalNPC<EPNPC>();
             if (gnpc.sunderingDebuff <= 0) {
                 gnpc.sunderingDebuff = 1;
+                npc.netUpdate = true;
             }
-            Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal);
+            Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal, 0.25f * (gnpc.sunderingDebuff / 2));
             dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
         }
 
@@ -53,7 +54,7 @@ namespace ExtraPets2.Content.Buffs {
             if (mplr.sunderingDebuff <= 0) {
                 mplr.sunderingDebuff = 1;
             }
-            Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal);
+            Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.FoodPiece, default, default, default, Colors.RarityNormal, (mplr.sunderingDebuff / 8));
             dust.shader = GameShaders.Armor.GetSecondaryShader(97, Main.LocalPlayer);
         }
     }

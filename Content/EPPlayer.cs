@@ -37,6 +37,11 @@ namespace ExtraPets2.Content {
             " fell apart."
         };
 
+        string[] EMCDeathReasons = {
+            " became EMC.",
+            " performed human transmutation."
+        };
+
         public override void ResetEffects() {
             equippedOpus = false;
         }
@@ -57,7 +62,7 @@ namespace ExtraPets2.Content {
                     Player.lifeRegen = 0;
                 }
                 Player.lifeRegenTime = 0;
-                Player.lifeRegen -= (int) ((Player.statLifeMax2 * sunderingDebuff) / 16);
+                Player.lifeRegen -= (int) ((Player.statLifeMax2 * (sunderingDebuff * 2)) / 16);
             }
         }
 
@@ -71,7 +76,7 @@ namespace ExtraPets2.Content {
 
         public override bool CanUseItem(Item item) {
             if (item.type == ModContent.ItemType<MagnumOpus>() && equippedOpus) {
-                Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + " became EMC."), Player.statManaMax2, 0);
+                Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + sunderDeathReasons[Main.rand.Next(0, 1)]), Player.statLifeMax2 - Player.statManaMax2, 0);
                 if (philoTextCooldown == 0) {
                     philoTextCooldown = 120;
                     CombatText.NewText(Player.getRect(), new Color(181, 47, 109), philoTexts[Main.rand.Next(0,6)], true);

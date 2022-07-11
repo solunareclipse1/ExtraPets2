@@ -23,8 +23,8 @@ namespace ExtraPets2.Content {
                 if (npc.lifeRegen > 0) {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= (int) ((npc.lifeMax * sunderingDebuff) / 16);
-                damage = (int) ((npc.lifeMax * sunderingDebuff) / 480);
+                npc.lifeRegen -= (int) ((npc.lifeMax * (sunderingDebuff * 2)) / 16);
+                damage = (int) ((npc.lifeMax * (sunderingDebuff * 2)) / 480);
             }
         }
     }

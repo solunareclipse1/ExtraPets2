@@ -1,8 +1,16 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using ReLogic.Content;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 
+using ExtraPets2.Content.Utilities;
+using ExtraPets2.Content.DrawLayers;
 using ExtraPets2.Content.Projectiles;
 
 
@@ -10,6 +18,11 @@ namespace ExtraPets2.Content.Items.Weapons {
 	public class MagnumOpus : ModItem {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Items/MagnumOpus";
+		//public static Asset<Texture2D> glowmask;
+
+		//public override void Unload() {
+		//	glowmask = null;
+		//}
 
 		public override void SetStaticDefaults() {
             DisplayName.SetDefault("Magnum Opus");
@@ -19,6 +32,16 @@ namespace ExtraPets2.Content.Items.Weapons {
 							+ "Cannot use as both at the same time\n"
 							+ "[c/B52F6D:i must say, this world is rather intriguing...]\n[c/B52F6D:i shall lend you my assistance, so that i may observe more of it...]");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
+			//if (!Main.dedServ) {
+			//	glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
+//
+			//	HeldItemLayer.RegisterData(Item.type, new DrawLayerData()
+			//	{
+			//		Texture = glowmask,
+			//		Color = (PlayerDrawSet drawInfo) => new Color(255, 255, 255, 50) * 0.75f
+			//	});
+			//}
 		}
 
 		public override void SetDefaults() {
@@ -57,5 +80,9 @@ namespace ExtraPets2.Content.Items.Weapons {
 			player.buffImmune[BuffID.ManaSickness] = true;
 			player.GetModPlayer<EPPlayer>().equippedOpus = true;
 		}
+
+		//public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float  scale, int whoAmI) {
+		//	Item.DroppedGlowmask(spriteBatch, glowmask.Value, new Color(255,255,255,50)*0.75f, rotation, scale);
+		//}
 	}
 }
