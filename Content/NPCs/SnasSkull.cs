@@ -17,6 +17,11 @@ namespace ExtraPets2.Content.NPCs {
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("gater blsatter");
 			Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.GiantCursedSkull];
+			
+			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {
+				Hide = true
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
 		}
 
 		public override void SetDefaults() {
