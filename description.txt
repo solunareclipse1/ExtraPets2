@@ -7,3 +7,4 @@ Mostly made this because I was bored. Don't expect any regularity to updates.
 Current Content (as of 2022-7-2):
     4 Pets
     4 Weapons
+    1 Boss

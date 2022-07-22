@@ -18,8 +18,11 @@ namespace ExtraPets2.Content {
         public static SoundStyle Sus9 = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SusAudio9");
 
         public static SoundStyle MagnumOpus = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MagnumOpus");
+        public static SoundStyle MagnumOpusAlt = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MagnumOpusAlt");
+        public static SoundStyle MagnumOpusReady = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MagnumOpusReady");
         public static SoundStyle MagnumOpusExpire = new SoundStyle(ExtraPets2.AssetPath + "Sounds/MagnumOpusExpire");
 
         public static SoundStyle SnasSpeak = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SnasSound");
+        public static SoundStyle SnasSpeakRare = new SoundStyle(ExtraPets2.AssetPath + "Sounds/SnasSoundRare");
     }
 }

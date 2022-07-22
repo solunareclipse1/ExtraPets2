@@ -4,12 +4,11 @@ using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ID;
-using Terraria.Audio;
 using Terraria.ModLoader;
 
-using ExtraPets2.Content.Projectiles;
+using ExtraPets2.Content.Projectiles.SnasBoss;
 
-namespace ExtraPets2.Content.NPCs {
+namespace ExtraPets2.Content.NPCs.SnasBoss {
 	public class SnasSkull : ModNPC {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/NPCs/SnasSkull";
@@ -22,6 +21,9 @@ namespace ExtraPets2.Content.NPCs {
 				Hide = true
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
+
+			NPCID.Sets.ProjectileNPC[Type] = true;
+			NPCID.Sets.DontDoHardmodeScaling[Type] = true;
 		}
 
 		public override void SetDefaults() {

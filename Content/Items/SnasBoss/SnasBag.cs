@@ -8,8 +8,9 @@ using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 
-using ExtraPets2.Content.NPCs;
+using ExtraPets2.Content.NPCs.SnasBoss;
 using ExtraPets2.Content.Items.Weapons;
+using ExtraPets2.Content.Items.Equippable.Armor;
 
 namespace ExtraPets2.Content.Items.SnasBoss {
 	public class SnasBag : ModItem {
@@ -40,14 +41,21 @@ namespace ExtraPets2.Content.Items.SnasBoss {
 			return true;
 		}
 
-		public override void OpenBossBag(Player player) { // TODO: proper boss items
+		public override void OpenBossBag(Player player) {
 			var fromBag = player.GetSource_OpenItem(Type);
 
 			if (Main.rand.NextBool(7)) {
 				player.QuickSpawnItem(fromBag, ModContent.ItemType<SnasMask>());
+			} else if (Main.rand.NextBool(7)) {
+				player.QuickSpawnItem(fromBag, ModContent.ItemType<SnasJacket>());
+			} else if (Main.rand.NextBool(7)) {
+				player.QuickSpawnItem(fromBag, ModContent.ItemType<SnasSlipper>());
 			}
-			
-			player.QuickSpawnItem(fromBag, ModContent.ItemType<GraveDanger>());
+
+			if (Main.rand.NextBool(66)) {
+				player.QuickSpawnItem(fromBag, ModContent.ItemType<GraveDanger>());
+			}
+			player.QuickSpawnItem(fromBag, ModContent.ItemType<Items.Equippable.Accessories.HyperMarrow>());
 		}
 
         public override Color? GetAlpha(Color lightColor) {

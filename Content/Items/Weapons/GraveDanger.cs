@@ -31,8 +31,8 @@ namespace ExtraPets2.Content.Items.Weapons {
 			Item.height = 30;
 			Item.scale = 1.0f;
 			Item.UseSound = SoundID.Dig;
-			Item.useAnimation = 5;
-			Item.useTime = 5;
+			Item.useAnimation = 60;
+			Item.useTime = 60;
 			Item.rare = ItemRarityID.Master;
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 6, 6, 6);

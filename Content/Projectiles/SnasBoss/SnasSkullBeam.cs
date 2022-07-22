@@ -6,9 +6,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using ExtraPets2.Content.NPCs;
+using ExtraPets2.Content.NPCs.SnasBoss;
 
-namespace ExtraPets2.Content.Projectiles {
+namespace ExtraPets2.Content.Projectiles.SnasBoss {
 	public class SnasSkullBeam : ModProjectile {
 
         public override string Texture => ExtraPets2.AssetPath + "Textures/Projectiles/SnasSkullBeam";
@@ -26,7 +26,7 @@ namespace ExtraPets2.Content.Projectiles {
 		}
 
 		public override void SetDefaults() {
-			Projectile.CloneDefaults(ProjectileID.FairyQueenSunDance);
+			Projectile.CloneDefaults(ProjectileID.PhantasmalDeathray);
 			Projectile.timeLeft = 30;
 			Projectile.aiStyle = -1;
 			Projectile.width = 10;
@@ -247,11 +247,12 @@ namespace ExtraPets2.Content.Projectiles {
 		public override void OnHitPlayer(Player target, int damage, bool crit) {
 			target.immune = false;
 			target.immuneTime = 0;
-			int time = 2;
 			if (target.HasBuff(BuffID.Venom)) {
-				time = Math.Min(target.buffTime[target.FindBuffIndex(BuffID.Venom)] + 1, 120);
+				int idx = target.FindBuffIndex(BuffID.Venom);
+				target.buffTime[idx] += 5;
+			} else {
+				target.AddBuff(BuffID.Venom, 60);
 			}
-			target.AddBuff(BuffID.Venom, time);
 		}
 	}
 }

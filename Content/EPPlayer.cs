@@ -13,6 +13,8 @@ namespace ExtraPets2.Content {
     public class EPPlayer : ModPlayer {
         public int sunderingDebuff;
         public bool equippedOpus = false;
+        public bool controlled = false;
+        public int forcedGravDir = 0;
         public int philoTextCooldown = 0;
 
         string[] philoTexts = {
@@ -44,14 +46,21 @@ namespace ExtraPets2.Content {
 
         public override void ResetEffects() {
             equippedOpus = false;
+            controlled = false;
         }
 
         public override void PostUpdate() {
             if (philoTextCooldown > 0) {
                 philoTextCooldown--;
             }
-        }
 
+            if (!controlled) {
+                forcedGravDir = 0;
+            } else {
+                Player.gravDir = forcedGravDir;
+            }
+        }
+        
         public override void UpdateBadLifeRegen() {
             if (sunderingDebuff > 0) {
                 if (Player.FindBuffIndex(ModContent.BuffType<SunderingDebuff>()) < 0) {
@@ -76,7 +85,7 @@ namespace ExtraPets2.Content {
 
         public override bool CanUseItem(Item item) {
             if (item.type == ModContent.ItemType<MagnumOpus>() && equippedOpus) {
-                Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + sunderDeathReasons[Main.rand.Next(0, 1)]), Player.statLifeMax2 - Player.statManaMax2, 0);
+                Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + EMCDeathReasons[Main.rand.Next(0, 1)]), Player.statLifeMax2 - Player.statManaMax2, 0);
                 if (philoTextCooldown == 0) {
                     philoTextCooldown = 120;
                     CombatText.NewText(Player.getRect(), new Color(181, 47, 109), philoTexts[Main.rand.Next(0,6)], true);

@@ -33,13 +33,14 @@ namespace ExtraPets2.Content.Projectiles {
 		}
 
 		public override bool OnTileCollide(Vector2 lastVelocity) {
+			Projectile.ai[0]++;
 			if (Projectile.velocity.X != lastVelocity.X) {
 				Projectile.velocity.X = lastVelocity.X * -0.75f;
 			}
 			if (Projectile.velocity.Y != lastVelocity.Y && (double)lastVelocity.Y > 1.5) {
 				Projectile.velocity.Y = lastVelocity.Y * -0.7f;
 			}
-			return false;
+			return Projectile.ai[0] >= 10;
 		}
 	}
 }
